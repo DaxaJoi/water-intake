@@ -1,0 +1,21 @@
+{% extends 'layouts/base-layout.html' %}
+
+{% block 'content' %}
+<div class="container">
+    <h1>Calculate Water Intake Difference</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="date1">Start Date:</label>
+        {{ form.date1 }} <br> <br>
+        <label for="date2">End Date:</label>
+        {{ form.date2 }} <br> <br>
+        <button type="submit">Calculate</button>
+    </form>
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    {% if difference is not None %}
+        <h2>The difference in water intake is: {{ difference }} liters</h2>
+    {% endif %}
+</div>
+{% endblock %}

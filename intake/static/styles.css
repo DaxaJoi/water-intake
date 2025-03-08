@@ -1,0 +1,17 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: aliceblue;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.jumbotron {
+    background-color: aquamarine;
+    color: #343a40;
+}
+
+th {
+    text-align: center;
+}

@@ -1,0 +1,32 @@
+{% extends 'layouts/base-layout.html' %}
+
+{% block 'content' %}
+<div class="container">
+  <h2>Your Daily Water Intake</h2>
+  <table border="2">
+    <thead class="">
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Quantity (L)</th>
+        <th colspan="2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for intake in intakes %}
+        <tr>
+          <td>{{ intake.user }}</td>
+          <td>{{ intake.date }}</td>
+          <td>{{ intake.time }}</td>
+          <td>{{ intake.quantity }}</td>
+          <td>
+            <a href="{% url 'edit_intake' intake.id %}" role="button">Edit</a></button>
+            <a href="{% url 'delete_intake' intake.id %}" role="button">Delete</a></button>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>  
+{% endblock %}

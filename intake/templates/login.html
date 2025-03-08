@@ -1,0 +1,15 @@
+{% extends 'layouts/base-layout.html' %}
+
+{% block 'content' %}
+
+<div class="container">
+  <h2>Login</h2>
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+    <i class="ml-2">Don't have an account? <a href="{% url 'signup' %}">Signup</a></i>
+  </form>
+</div>  
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'layouts/base-layout.html' %}
+
+{% block 'content' %}
+<div class="container">
+    <ul>
+        {% for intake in intakes %}
+            <li>{{ intake.user }}</li> 
+            {{ intake.date }} {{ intake.time }} {{ intake.quantity }} L
+        {% endfor %}
+    </ul>
+
+    <div class="pagination">
+            {% if intakes.has_previous %}
+            <a href="?page=1" class="page-link">&laquo; first</a>                
+            <a href="?page={{ intakes.previous_page_number }}" class="page-link" aria-label="previous">&laquo; previous</a>            {% endif %}
+
+                {% for page_number in intakes.paginator.get_elided_page_range %}
+                {% if intakes.number == page_number %}
+                        <span class="page-link">{{ page_number }}</span>
+                {% else %}
+                        <a href="?page={{ page_number }}" class="page-link">{{ page_number }}</a>
+                {% endif %}
+                {% endfor %}
+
+            {% if intakes.has_next %}
+            <a href="?page={{ intakes.next_page_number }}" class="page-link">next &raquo;</a>
+            <a href="?page={{ intakes.paginator.num_pages }}" class="page-link">last &raquo;</a>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}
